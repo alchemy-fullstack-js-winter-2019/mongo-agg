@@ -1,6 +1,10 @@
 require('dotenv').config();
 require('./lib/utils/connect')();
-const seedData = require('./test/seedData.js');
+const { 
+  tweetSeeds,
+  userSeeds
+} = require('./test/seedData.js');
 
-seedData();
-console.log('done');
+userSeeds();
+tweetSeeds();
+console.log('done'); // eslint-disable-line no-console
