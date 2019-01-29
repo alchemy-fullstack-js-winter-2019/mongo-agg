@@ -11,17 +11,19 @@ mongoose.connection.dropDatabase();
 
 const seedData = () => {
   return Promise.all(
-    users.map(() => {
+    users.map((el, index) => {
       return User.create(
-        [{ email: 'test1@test.com', password: 'password' }]);
-    }),
-    arr.map(() => {
-      return Tweet.create({ 
-        handle: chance.name(), 
-        text: chance.sentence() 
-      });
+        { email: `test${index}@test.com`, password: 'password' });
     })
-  );
+  )
+    .then(users => {
+      console.log('USERS', chance.pickone(users));
+      return Promise.all(
+        arr.map(() => {
+          Tweet.create({ handle: chance.pickone(users)._id, text: chance.sentence() });
+        })
+      );
+    });
 };
 
 module.exports = seedData;
