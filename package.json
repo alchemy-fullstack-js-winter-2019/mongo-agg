@@ -8,7 +8,8 @@
     "test:watch": "jest --watch --verbose --runInBand --detectOpenHandles",
     "lint": "eslint .",
     "pretest": "npm run lint",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "seed": "node seed.js"
   },
   "jest": {
     "testEnvironment": "node"
@@ -25,6 +26,7 @@
   },
   "homepage": "https://github.com/caripizza/mongo-agg#readme",
   "dependencies": {
+    "chance": "^1.0.18",
     "dotenv": "^6.2.0",
     "eslint": "^5.12.1",
     "express": "^4.16.4",
