@@ -8,11 +8,11 @@ const seedData = () => {
   const users = [{ email: 'teonna@heintz.com', password: 'Robert34980' }, { email: 'teonna@zaragoza.com', password: 'Robert34980' }, { email: 'teonna@maree.com', password: 'Robert34980' }];
   
   return Promise.all(users.map(user => User.create(user)))
-    .then(user => {
+    .then(users => {
       return Promise.all(
         tweets.map(() => {
           return Tweet.create({
-            handle: chance.name(), 
+            handle: chance.pickone(users), 
             text: chance.sentence()
           });
         })
