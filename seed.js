@@ -1,5 +1,5 @@
 require('dotenv').config();
-require('./lib/utils/connect');
+require('./lib/utils/connect')();
 const seedData = require('./test/seedData.js');
 
 seedData();
