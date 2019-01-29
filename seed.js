@@ -1,8 +1,10 @@
 require('dotenv').config();
 require('./lib/utils/connect')();
-const { seedData, users } = require('./test/seedData');
+const { seedData } = require('./test/seedData');
+// const mongoose = require('mongoose');
 
 seedData();
-users();
 
 console.log('done');
+
+// mongoose.connect.db.dropDatabase();

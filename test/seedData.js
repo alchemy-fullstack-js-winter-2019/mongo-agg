@@ -4,27 +4,22 @@ const chance = new Chance();
 const User = require('../lib/models/User');
 
 const seedData = () => {
-  const arr = [...Array(100)];
   return Promise.all(
-    arr.map(() => {
-      return Tweet.create({
-        handle: chance.name(),
-        text: chance.sentence()
-      });
-    })
-  );
-};
-
-const users = () => {
-  return Promise.all(
-    [...Array(5)].map(() => {
+    [...Array(5)].map((ele, index) => {
       return User.create({
-        email: 'test@test.com',
+        email: `test${index}@test.com`,
         password: 'password'
       });
     })
-  );
+  ).then(users => {
+    return Promise.all(
+      [...Array(100)].map(() => {
+        return Tweet.create({
+          handle: chance.pickone(users),
+          text: chance.sentence()
+        });
+      }));
+  });
 };
-  
 
-module.exports = { seedData, users };
+module.exports = { seedData };
