@@ -7,10 +7,10 @@ const users = [{ email: 'test1@test.com', password: 'password' }, { email: 'test
 const arr = [...Array(100)];
 
 const seedData = () => {
-  return Promise.all(
-    users.map(user => {
-      return User.create(user)
-        .then(() => {
+  // return Promise.all(
+  //   users.map(user => {
+  //     return User.create(user)
+  //       .then(() => {
           return Promise.all(
             arr.map(() => {
               return Tweet.create({ 
@@ -19,10 +19,9 @@ const seedData = () => {
               });
             })
           );
-        });
-      
-    })
-  );
+        // });
+    // })
+  // );
 };
 
 module.exports = seedData;
