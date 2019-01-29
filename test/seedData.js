@@ -10,20 +10,21 @@ const seedData = () => {
     // const users = [{ email: 'test@test.com', password: 'password' }];
     const userArr = [...Array(5)];
 
-    
-
     return Promise.all(
         userArr.map(() => {
             return User.create({
                 email: 'test@test.com', password: 'password' });
-        }),
-            
-        arr.map(() => {
-            return Tweet.create({ 
-                handle: chance.name(),
-                text: chance.sentence()
-            });
-        }));
+        }))
+        .then(users => {
+            return Promise.all(
+                arr.map(() => {
+                    return Tweet.create({ 
+                        handle: chance.pickone(users)._id,
+                        text: chance.sentence()
+                    });
+                })
+            );
+        });
 };
 
 module.exports = seedData;
