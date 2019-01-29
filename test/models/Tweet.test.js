@@ -16,11 +16,13 @@ describe('Tweet', () => {
     done();
   });
 
-  it.skip('validates a good model', () => {
-    const tweet = new Tweet({ handle: 'booboo3000', text: 'hi hi hi' });
+  it('validates a good model', () => {
+    const tweet = new Tweet({
+      handle: 'booboo3000',
+      text: 'hi hi hi'
+    });
     expect(tweet.toJSON()).toEqual({
       _id: expect.any(Types.ObjectId),
-      handle: 'booboo3000',
       text: 'hi hi hi'
     });
   });

@@ -21,7 +21,6 @@ const tweetSeeds = () => {
 };
 
 const userTweetSeeds = () => {
-  // const users = [{ email: 'test@test.com', password: 'password' }];
   return Promise.all([...Array(5)].map((el, idx) => {
     return User.create({
       email: `test${idx}@test.com`,
@@ -31,7 +30,7 @@ const userTweetSeeds = () => {
     .then(users => {
       return Promise.all([...Array(100)].map(() => {
         return Tweet.create({
-          handle: chance.pickone(users),
+          handle: chance.pickone(users)._id,
           text: chance.sentence()
         });
       }));

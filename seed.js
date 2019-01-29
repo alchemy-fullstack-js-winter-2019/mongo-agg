@@ -5,8 +5,11 @@ const {
   // userSeeds,
   userTweetSeeds
 } = require('./test/seedData.js');
+const mongoose = require('mongoose');
 
-userTweetSeeds();
+userTweetSeeds()
 // userSeeds();
 // tweetSeeds();
-console.log('done'); // eslint-disable-line no-console
+// eslint-disable-next-line no-console
+  .then(() => console.log('done'))
+  .finally(() => mongoose.connection.close());
