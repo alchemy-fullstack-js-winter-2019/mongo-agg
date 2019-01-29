@@ -1,7 +1,10 @@
 require('dotenv').config();
 require('./lib/utils/connect')();
+const mongoose = require('mongoose');
 const seedData = require('./test/seedData.js');
 
-seedData();
-
-console.log('done');
+seedData()
+  .then(() => {
+    console.log('done');
+  })
+  .finally(() => mongoose.connection.close());
