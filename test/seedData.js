@@ -5,9 +5,9 @@ const User = require('../lib/models/User');
 
 const seedData = () => {
   return Promise.all(
-    [...Array(5)].map((ele, index) => {
+    [...Array(5)].map((ele, i) => {
       return User.create({
-        email: `test${index}@test.com`,
+        email: `test${i}@test.com`,
         password: 'password'
       });
     })
