@@ -12,13 +12,16 @@ const seedData = () => {
             return User.create({
                 email: `${i}happy@gmail.com`, password: 'password1'
             });
-        }),
-        arr.map(() => {
-            return Tweet.create({ 
-                handle: chance.name(),
-                text: chance.sentence()
-            });
-        }),
-    );
+        }))
+        .then(users => {
+            return Promise.all(
+                arr.map(() => {
+                    return Tweet.create({ 
+                        handle: chance.pickone(users)._id,
+                        text: chance.sentence()
+                    });
+                })
+            );
+        });
 };
 module.exports = seedData; 
