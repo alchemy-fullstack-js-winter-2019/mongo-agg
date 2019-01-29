@@ -1,17 +1,23 @@
 const Chance = require('chance');
 const chance = new Chance();
 const Tweet = require('../lib/models/Tweet');
+const User = require('../lib/models/User');
 
 const seedData = () => {
-  const arr = [...Array(100)];
-  return Promise.all(
-    arr.map(() => {
-      return Tweet.create({
-        handle: chance.name(), 
-        text: chance.sentence()
-      });
-    })
-  );
+  const tweets = [...Array(100)];
+  const users = [{ email: 'teonna@heintz.com', password: 'Robert34980' }, { email: 'teonna@zaragoza.com', password: 'Robert34980' }, { email: 'teonna@maree.com', password: 'Robert34980' }];
+  
+  return Promise.all(users.map(user => User.create(user)))
+    .then(user => {
+      return Promise.all(
+        tweets.map(() => {
+          return Tweet.create({
+            handle: chance.name(), 
+            text: chance.sentence()
+          });
+        })
+      );
+    }); 
 };
 
 module.exports = seedData;
