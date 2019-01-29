@@ -20,8 +20,27 @@ const tweetSeeds = () => {
   }));
 };
 
+const userTweetSeeds = () => {
+  // const users = [{ email: 'test@test.com', password: 'password' }];
+  return Promise.all([...Array(5)].map((el, idx) => {
+    return User.create({
+      email: `test${idx}@test.com`,
+      password: 'password'
+    });
+  }))
+    .then(users => {
+      return Promise.all([...Array(100)].map(() => {
+        return Tweet.create({
+          handle: chance.pickone(users),
+          text: chance.sentence()
+        });
+      }));
+    });
+};
+
 
 module.exports = {
   tweetSeeds,
-  userSeeds
+  userSeeds,
+  userTweetSeeds
 };
