@@ -2,26 +2,26 @@ const Chance = require('chance');
 const chance = new Chance();
 const Tweet = require('../lib/models/Tweet');
 const User = require('../lib/models/User');
+const mongoose = require('mongoose');
 
-const users = [{ email: 'test1@test.com', password: 'password' }, { email: 'test2@test.com', password: 'password' }, { email: 'test3@test.com', password: 'password' }, { email: 'test4@test.com', password: 'password' }, { email: 'test5@test.com', password: 'password' }];
+const users = [...Array(5)];
 const arr = [...Array(100)];
 
+mongoose.connection.dropDatabase();
+
 const seedData = () => {
-  // return Promise.all(
-  //   users.map(user => {
-  //     return User.create(user)
-  //       .then(() => {
-          return Promise.all(
-            arr.map(() => {
-              return Tweet.create({ 
-                handle: chance.name(), 
-                text: chance.sentence() 
-              });
-            })
-          );
-        // });
-    // })
-  // );
+  return Promise.all(
+    users.map(() => {
+      return User.create(
+        [{ email: 'test1@test.com', password: 'password' }]);
+    }),
+    arr.map(() => {
+      return Tweet.create({ 
+        handle: chance.name(), 
+        text: chance.sentence() 
+      });
+    })
+  );
 };
 
 module.exports = seedData;
