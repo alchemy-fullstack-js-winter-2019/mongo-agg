@@ -11,9 +11,9 @@ const seedData = () => {
     const userArr = [...Array(5)];
 
     return Promise.all(
-        userArr.map(() => {
+        userArr.map((ele, i) => {
             return User.create({
-                email: 'test@test.com', password: 'password' });
+                email: `test${i}@test.com`, password: 'password' });
         }))
         .then(users => {
             return Promise.all(
