@@ -12,11 +12,11 @@ module.exports = () => {
       return User.create({ email, password });
     })
   )
-  .then(users => {
-    return Promise.all([...Array(100)].map(() => {
-      const text = chance.sentence({ words: 5 });
+    .then(users => {
+      return Promise.all([...Array(100)].map(() => {
+        const text = chance.sentence({ words: 5 });
 
-      return Tweet.create({ handle: chance.pickone(users)._id, text });
-    }));
-  })
+        return Tweet.create({ handle: chance.pickone(users)._id, text });
+      }));
+    });
 };
