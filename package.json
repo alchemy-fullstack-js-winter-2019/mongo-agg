@@ -1,0 +1,30 @@
+{
+  "name": "mongo-agg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "seed": "node seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/connorfrendt/mongo-agg.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/connorfrendt/mongo-agg/issues"
+  },
+  "homepage": "https://github.com/connorfrendt/mongo-agg#readme",
+  "dependencies": {
+    "chance": "^1.0.18",
+    "dotenv": "^6.2.0",
+    "eslint": "^5.12.1",
+    "mongoose": "^5.4.7"
+  }
+}
