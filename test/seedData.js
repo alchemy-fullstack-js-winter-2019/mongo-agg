@@ -11,7 +11,7 @@ const createTweets = () => {
   return Promise.all(
     users.map((el, index) => {
       return User.create(
-        [{ email: `test${index}@test.com`, password: 'password' }]);
+        { email: `test${index}@test.com`, password: 'password' });
     })
   )
     .then(users => {
