@@ -2,12 +2,12 @@ const Chance = require('chance');
 const chance = new Chance();
 const Tweet = require('../lib/models/Tweet');
 const User = require('../lib/models/User');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
-const users = [...Array(5)];
-const arr = [...Array(100)];
+const users = [...Array(10)];
+const arr = [...Array(1000)];
 
-mongoose.connection.dropDatabase();
+// mongoose.connection.dropDatabase();
 
 const seedData = () => {
   return Promise.all(
@@ -17,7 +17,6 @@ const seedData = () => {
     })
   )
     .then(users => {
-      console.log('USERS', chance.pickone(users));
       return Promise.all(
         arr.map(() => {
           Tweet.create({ handle: chance.pickone(users)._id, text: chance.sentence() });
@@ -25,5 +24,7 @@ const seedData = () => {
       );
     });
 };
+
+
 
 module.exports = seedData;
