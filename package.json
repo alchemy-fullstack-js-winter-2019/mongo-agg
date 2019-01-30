@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "node seed.js"
+    "seed": "node seed.js",
+    "pretest": "npm run lint",
+    "test:watch": "jest --watchAll --runInBand",
+    "start": "node index.js",
+    "start:watch": "nodemon index.js",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
