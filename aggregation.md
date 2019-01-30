@@ -18,6 +18,11 @@
 * add another stage to your aggregation
   * use `$lookup` to join with your users collection
     * see the docs here [https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/](https://docs.mongodb.com/manual/reference/operator/aggregation/lookup/)
+    * NOTES: solution => 
+    `db.tweets.aggregate([`
+        `{ $group: { _id: '$handle', tweets: { $addToSet: '$text' } } }, `
+        `{ $lookup: { from: 'users', localField: '_id', foreignField: '_id', as: 'user' }`
+    `} ])`
 
 ## Average tweet length
 
@@ -30,3 +35,8 @@
   * group by `null` to create 1 group `_id: null`
   * use `$avg` to get the average tweet length
     * `{ $avg: '$length' } }`
+    * SOLUTION : 
+    db.tweets.aggregate([
+        { $project: { 'length': { $strLenCP: '$text' } } },
+        { $group: { _id: null, tweetLength: { $avg: '$length' } } } 
+    ])

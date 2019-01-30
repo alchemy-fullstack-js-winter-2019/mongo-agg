@@ -3,9 +3,12 @@ const Chance = require('chance');
 const chance = new Chance();
 const User = require('../lib/models/User');
 
+const TOTAL_USERS = 20;
+const TOTAL_TWEETS = 1000;
+
 const seedData = () => {
   return Promise.all(
-    [...Array(5)].map((ele, i) => {
+    [...Array(TOTAL_USERS)].map((ele, i) => {
       return User.create({
         email: `test${i}@test.com`,
         password: 'password'
@@ -13,9 +16,9 @@ const seedData = () => {
     })
   ).then(users => {
     return Promise.all(
-      [...Array(100)].map(() => {
+      [...Array(TOTAL_TWEETS)].map(() => {
         return Tweet.create({
-          handle: chance.pickone(users),
+          handle: chance.pickone(users)._id,
           text: chance.sentence()
         });
       }));
