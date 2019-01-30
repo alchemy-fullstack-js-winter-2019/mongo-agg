@@ -20,10 +20,12 @@ const tweetSeeds = () => {
   }));
 };
 
+const rdmNum = Math.random().toFixed(2).slice(2);
+
 const userTweetSeeds = () => {
   return Promise.all([...Array(5)].map((el, idx) => {
     return User.create({
-      email: `test${idx}@test.com`,
+      email: `test${idx}@test${rdmNum}.com`,
       password: 'password'
     });
   }))
