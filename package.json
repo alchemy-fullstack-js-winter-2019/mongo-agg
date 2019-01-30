@@ -1,0 +1,33 @@
+{
+  "name": "mongo-agg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "seed": "node seed.js",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crperezchica/mongo-agg.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crperezchica/mongo-agg/issues"
+  },
+  "homepage": "https://github.com/crperezchica/mongo-agg#readme",
+  "devDependencies": {
+    "dotenv": "^6.2.0",
+    "eslint": "^5.12.1",
+    "jest": "^24.0.0",
+    "mongoose": "^5.4.7",
+    "nodemon": "^1.18.9"
+  },
+  "dependencies": {
+    "chance": "^1.0.18",
+    "mongodb": "^3.1.13"
+  }
+}
