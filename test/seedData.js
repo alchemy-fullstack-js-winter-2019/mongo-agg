@@ -12,7 +12,7 @@ const seedData = () => {
       return Promise.all(
         tweets.map(() => {
           return Tweet.create({
-            handle: chance.pickone(users), 
+            handle: chance.pickone(users)._id, 
             text: chance.sentence()
           });
         })
