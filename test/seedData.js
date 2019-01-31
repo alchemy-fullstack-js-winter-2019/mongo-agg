@@ -21,3 +21,17 @@ module.exports = () => {
       );
       });
     };
+
+    //Robo 3T 
+    //Groups Tweets by user:
+    // db.tweeets/aggregate([
+    //   ($group: ( _id: '$handle', twwets: { $addToSet: '$tex' }))
+    // ])
+    
+    
+    // db.tweets.aggregate([ { $group: {_id: '$handle', tweets: {$lookup: '$text'} } }])
+    
+    // { $project: { lenght: {$strlenCP: '$text' }}},
+    // {$group: {_id: null, tweetsLenght: {}}}
+
+    
