@@ -1,0 +1,36 @@
+{
+  "name": "mongo-agg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "seed.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "chance": "^1.0.18",
+    "dotenv": "^6.2.0",
+    "eslint": "^5.12.1",
+    "jest": "^24.0.0",
+    "mongoose": "^5.4.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js",
+    "start:watch": "nodemon server.js",
+    "test": "jest --verbose --runInBand",
+    "test:watch": "npm run test -- --watch",
+    "seed": "node seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cruzayye/mongo-agg.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cruzayye/mongo-agg/issues"
+  },
+  "homepage": "https://github.com/cruzayye/mongo-agg#readme"
+}
