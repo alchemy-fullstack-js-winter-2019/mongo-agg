@@ -10,16 +10,17 @@
   "dependencies": {
     "chance": "^1.0.18",
     "dotenv": "^6.2.0",
-    "eslint": "^5.12.1",
     "jest": "^24.0.0",
     "mongoose": "^5.4.7"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^5.12.1"
+  },
   "scripts": {
     "start": "node server.js",
     "start:watch": "nodemon server.js",
-    "test": "jest --verbose --runInBand",
-    "test:watch": "npm run test -- --watch",
+    "jest": "jest --verbose --runInBand",
+    "test": "exit 0",
     "seed": "node seed.js"
   },
   "repository": {
