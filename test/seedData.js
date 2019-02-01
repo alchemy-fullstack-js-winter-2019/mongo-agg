@@ -1,30 +1,24 @@
-const Chance = require('chance');
-const chance = new Chance();
 const Tweet = require('../lib/models/Tweet');
 const User = require('../lib/models/User');
-// const mongoose = require('mongoose');
+const Chance = require('chance');
+const chance = new Chance();
 
-const users = [...Array(10)];
-const arr = [...Array(1000)];
+const DEFAULT_TOTAL_USERS = 10;
+const DEFAULT_TOTAL_TWEETS = 1000;
 
-// mongoose.connection.dropDatabase();
-
-const seedData = () => {
+module.exports = (totalUsers = DEFAULT_TOTAL_USERS, totalTweets = DEFAULT_TOTAL_TWEETS) => {
   return Promise.all(
-    users.map((el, index) => {
-      return User.create(
-        { email: `test${index}@test.com`, password: 'password' });
-    })
+    [...Array(totalUsers)].map((ele, index) => User.create({ email: `test${index}@test.com`, password: 'password' }))
   )
     .then(users => {
       return Promise.all(
-        arr.map(() => {
-          Tweet.create({ handle: chance.pickone(users)._id, text: chance.sentence() });
+        [...Array(totalTweets)].map(() => {
+          return Tweet.create({
+            handle: chance.pickone(users)._id,
+            text: chance.sentence()
+          });
         })
       );
     });
 };
 
-
-
-module.exports = seedData;
