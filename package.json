@@ -1,0 +1,35 @@
+{
+  "name": "mongo-agg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "exit 0",
+    "start": "nodemon server.js",
+    "seed": "node seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avanvalk/mongo-agg.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avanvalk/mongo-agg/issues"
+  },
+  "homepage": "https://github.com/avanvalk/mongo-agg#readme",
+  "devDependencies": {
+    "chance": "^1.0.18",
+    "eslint": "^5.12.1",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.7",
+    "nodemon": "^1.18.9",
+    "supertest": "^3.4.2"
+  },
+  "dependencies": {
+    "jest": "^24.0.0"
+  }
+}
