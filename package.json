@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "exit 0",
     "seed": "node seed.js",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
