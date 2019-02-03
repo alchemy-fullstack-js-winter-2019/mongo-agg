@@ -74,7 +74,7 @@ describe('User model', () => {
 
   it('can find a user by token', () => {
     return User.create({
-      email: 'test@test.com',
+      email: 'test@test.com', 
       password: 'p455w0rd'
     })
       .then(user => tokenize(user))
