@@ -3,7 +3,7 @@ const chance = new Chance();
 const Tweet = require('../lib/models/Tweet');
 const User = require('../lib/models/User');
 
-const users = [...Array(5)];
+const users = [...Array(10)];
 const arr = [...Array(100)];
 
 
