@@ -17,5 +17,13 @@ describe('jwt functions', () => {
     });
   });
 
-
+  it('can verify a token with expiration', () => {
+    const token = jwt.sign({ payload: { hi: 'there' } }, 'secret', { expiresIn: '1h' });
+    const body = jwt.verify(token, 'secret');
+    expect(body).toEqual({
+      payload: { hi: 'there' },
+      iat: expect.any(Number),
+      exp: expect.any(Number)
+    });
+  });
 });
