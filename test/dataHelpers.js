@@ -24,7 +24,7 @@ let token;
 beforeEach(() => {
   return User.findOne({ username: 'seed1' })
     .then(user => {
-      console.log('here', user);
+
       return request(app)
         .post('/auth/signin')
         .send({
