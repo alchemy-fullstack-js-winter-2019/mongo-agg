@@ -63,4 +63,14 @@ describe('hashing functions', () => {
         expect(result).toBeFalsy();
       });
   });
+
+  it('can hash a password', () => {
+    return hash('password')
+      .then(hashedPassword => {
+        expect(hashedPassword).toBeDefined();
+        expect(hashedPassword).not.toEqual('password');
+      });
+  });
+
+  
 });
