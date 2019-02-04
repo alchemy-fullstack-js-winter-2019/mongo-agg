@@ -16,5 +16,23 @@ describe('User model', () => {
     expect(errors.username.message).toEqual('Username required');
   });
 
+  it('stores a _tempPassword', () => {
+    const user = new User({
+      username: 'abelq16',
+      password: 'password'
+    });
+    expect(user._tempPassword).toEqual('p455w0rd');
+  });
+
+  it('has a passwordHash', () => {
+    return User.create({
+      username: 'abelq16',
+      password: 'password'
+    })
+      .then(user => {
+        expect(user.passwordHash).toEqual(expect.any(String));
+        expect(user.password).toBeUndefined();
+      });
+  });
 
 });
