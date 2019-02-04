@@ -76,4 +76,19 @@ describe('User model', () => {
       });
   });
 
+  it('can create an auth token', () => {
+    return User.create({
+      username: 'test',
+      password: 'password'
+    })
+      .then(user => user.authToken())
+      .then(untokenize)
+      .then(user => {
+        expect(user).toEqual({
+          username: 'test',
+          _id: expect.any(String)
+        });
+      });
+  });
+
 });
