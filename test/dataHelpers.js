@@ -24,8 +24,9 @@ let token;
 beforeEach(() => {
   return User.findOne({ username: 'seed1' })
     .then(user => {
+      console.log('here', user);
       return request(app)
-        .post('/auth/signing')
+        .post('/auth/signin')
         .send({
           username: user.username,
           password: 'password'
@@ -44,6 +45,7 @@ const prepare = model => JSON.parse(JSON.stringify(model));
 const prepareAll = models => models.map(prepare);
 
 const createGetters = Model => {
+  
   return {
     [`get${Model.modelName}`]: (query = {}) => Model.findOne(query).then(prepare),
     [`get${Model.modelName}s`]: (query = {}) => Model.find(query).then(prepareAll),

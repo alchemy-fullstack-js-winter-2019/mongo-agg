@@ -33,5 +33,24 @@ describe('post routes', () => {
       });
   });
 
+  it('gets a post by id', () => {
+    return getPost()
+      .then(post => {
+        return request(app)
+          .get(`/posts/${post._id}`);
+      })
+      .then(res => {
+        expect(res.body).toEqual({
+          user: expect.objectContaining({
+            username: expect.stringContaining('seed')
+          }),
+          caption: expect.any(String),
+          photoUrl: expect.any(String),
+          tags: [],
+          _id: expect.any(String),
+          __v: 0
+        });
+      });
+  });
   
 });

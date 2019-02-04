@@ -7,6 +7,8 @@
     "maxlength",
     "mundo",
     "pickone",
+    "signin",
+    "signup",
     "untokenize"
   ]
 }
