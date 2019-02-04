@@ -42,7 +42,7 @@ describe('hashing functions', () => {
       });
   });
 
-  it('can compare hashes based on the same password', () => {
+  it('can compare hashes with the same password', () => {
     const password = 'password';
 
     return bcrypt.hash(password, 10)
@@ -51,6 +51,16 @@ describe('hashing functions', () => {
       })
       .then(result => {
         expect(result).toBeTruthy();
+      });
+  });
+
+  it('can compare hashes with different password', () => {
+    return bcrypt.hash('password', 10)
+      .then(hashedPassword => {
+        return bcrypt.compare('badPassword', hashedPassword);
+      })
+      .then(result => {
+        expect(result).toBeFalsy();
       });
   });
 });
