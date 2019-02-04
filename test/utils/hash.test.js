@@ -27,7 +27,7 @@ describe('hashing functions', () => {
 
   it('creates the same hash given the same salt', () => {
     const password = 'password';
-    const versionInfo = '$5a$26$';
+    const versionInfo = '$2b$10$';
     const salt = 'ABCDEFGHIJKLMNOPQRSTUV';
     const bcryptSalt = `${versionInfo}${salt}`;
     return bcrypt.hash(password, bcryptSalt)
@@ -72,5 +72,16 @@ describe('hashing functions', () => {
       });
   });
 
+  it('can compare a password and string', () => {
+    return hash('password')
+      .then(hashedPassword => {
+        return compare('password', hashedPassword);
+      })
+      .then(result => {
+        expect(result).toBeTruthy();
+      });
+  });
+
   
+
 });
