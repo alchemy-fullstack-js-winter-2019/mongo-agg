@@ -1,28 +1,24 @@
-const Chance = require('chance');
-const chance = new Chance();
 const Tweet = require('../lib/models/Tweet');
 const User = require('../lib/models/User');
+const Chance = require('chance');
+const chance = new Chance();
 
-const users = [...Array(10)];
-const arr = [...Array(100)];
+const TOTAL_USERS = 5;
+const TOTAL_TWEETS = 100;
 
-
-const createTweets = () => {
+module.exports = () => {
   return Promise.all(
-    users.map((el, index) => {
-      return User.create(
-        { email: `test${index}@test.com`, password: 'password' });
-    })
-  )
+    [...Array(Total_USERS)].map((el, i) => {
+      User.create({ email: `test${i}@test.com` }))
+    )
     .then(users => {
       return Promise.all(
-        arr.map(() => {
-          Tweet.create({ 
+        [...Array(TOTAL_TWEETS)].map(() => {
+          return Tweet.create({ 
             handle: chance.pickone(users)._id, 
-            text: chance.sentence() });
+            text: chance.sentence()
+           });
         })
       );
     });
 };
-
-module.exports = createTweets;
