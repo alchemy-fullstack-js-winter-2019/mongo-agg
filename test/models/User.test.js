@@ -35,4 +35,17 @@ describe('User model', () => {
       });
   });
 
+  it('can compare good passwords', () => {
+    return User.create({
+      username: 'test',
+      password: 'password'
+    })
+      .then(user => {
+        return user.compare('password');
+      })
+      .then(result => {
+        expect(result).toBeTruthy();
+      });
+  });
+
 });
