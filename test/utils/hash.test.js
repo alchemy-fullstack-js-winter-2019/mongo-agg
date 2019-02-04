@@ -82,6 +82,14 @@ describe('hashing functions', () => {
       });
   });
 
-  
+  it('can compare a bad password and string', () => {
+    return hash('password')
+      .then(hashedPassword => {
+        return compare('badPassword', hashedPassword);
+      })
+      .then(result => {
+        expect(result).toBeFalsy();
+      });
+  });
 
 });
