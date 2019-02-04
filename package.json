@@ -1,0 +1,36 @@
+{
+  "name": "mongo-agg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "seed": "node seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeiWolfei/mongo-agg.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeiWolfei/mongo-agg/issues"
+  },
+  "homepage": "https://github.com/JeiWolfei/mongo-agg#readme",
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "jest": "^24.0.0",
+    "nodemon": "^1.18.9",
+    "chance": "^1.0.18",
+    "supertest": "^3.4.2"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "inquirer": "^6.2.2",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.7",
+    "superagent": "^4.1.0"
+  }
+}
