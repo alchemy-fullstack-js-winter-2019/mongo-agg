@@ -24,4 +24,21 @@ describe('hashing functions', () => {
   });
 
 
+
+  it('creates the same hash given the same salt', () => {
+    const password = 'password';
+    const versionInfo = '$5a$26$';
+    const salt = 'ABCDEFGHIJKLMNOPQRSTUV';
+    const bcryptSalt = `${versionInfo}${salt}`;
+    return bcrypt.hash(password, bcryptSalt)
+      .then(hashedPassword => {
+        return Promise.all([
+          Promise.resolve(hashedPassword),
+          bcrypt.hash(password, bcryptSalt)
+        ]);
+      })
+      .then(([hash1, hash2]) => {
+        expect(hash1).toEqual(hash2);
+      });
+  });
 });
